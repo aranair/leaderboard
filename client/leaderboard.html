@@ -1,36 +1,47 @@
 <head>
   <title>Bugs Monday</title>
   <link href='http://fonts.googleapis.com/css?family=Lato:100,300,500,700' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Droid+Serif' rel='stylesheet' type='text/css'>
 </head>
 
 <body>
   <div class="header__login-buttons">{{> loginButtons}}</div>
+  <div class="header__title"><h3>#bugsmonday</h3></div>
   <div class="container-fluid">
     <div class="row">
       <div class="left-container col-xs-4 col-xs-offset-2">
-        <h1 class="main-title">Bugs Monday Leaderboard</h1>
         {{#if currentUser}}
           {{> newplayerform}}
         {{/if}}
         {{> playerslist}}
       </div>
-      <div class="right-container col-xs-3">
-        {{> winnerslist}}
+      <div class="right-container col-xs-6">
+        <div class="row">
+          <div class="right-container__contents col-xs-12">
+            <h2 class="right-container__halloffame">
+              HALL OF FAME
+            </h2>
+            {{> winnerslist}}
+          </div>
+        </div>
+        <div class="row">
+          <div class="right-container__credits col-xs-12">
+            <h4>reserved space for homan woots.</h4>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </body>
 
 <template name="winnerslist">
-<h3>Leading Wegonauts</h3>
 {{#each winners}}
   {{> winner}}
 {{/each}}
 </template>
 
 <template name="winner">
-<h1>{{name}}</h1>
-{{point}}
+<h1 class="winners-list__name">{{name}}</h1>
 </template>
 
 <template name="newplayerform">
