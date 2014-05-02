@@ -1,29 +1,32 @@
 <head>
   <title>Bugs Monday</title>
+  <link href='http://fonts.googleapis.com/css?family=Lato:100,300,500,700' rel='stylesheet' type='text/css'>
 </head>
 
 <body>
   <div class="header__login-buttons">{{> loginButtons}}</div>
-  <div class="container main-container">
-    <h1>Bugs Monday Leaderboard</h1>
-    <div class="row">
-      {{> newplayerform}}
-    </div>
-    <div class="row">
-      {{> playerslist}}
+  <div class="container">
+    <div class="mid-container">
+      <h1 class="main-title">Bugs Monday Leaderboard</h1>
+      <div class="row">
+        {{> newplayerform}}
+      </div>
+      <div class="row">
+        {{> playerslist}}
+      </div>
     </div>
   </div>
 </body>
 
 <template name="newplayerform">
-  <div class="col-xs-3 new-player-form">
+  <div class="col-xs-6 new-player-form">
     <form role="form" class="js-new-player">
       <div class="form-group">
-        <input type="text" class="form-control js-new-player-name" name="new_player_name" placeholder="New Player Name">
+        <input type="text" class="form-control form__new-player-name js-new-player-name" name="new_player_name" placeholder="New Player Name">
       </div>
     </form>
   </div>
-  <div class="col-xs-2 form__save-btn-container">
+  <div class="col-xs-6 form__save-btn-container">
     <button type="submit" class="btn btn-success form__save-btn">+</button>
   </div>
 </template>
@@ -37,9 +40,12 @@
 </template>
 
 <template name="player">
-<div class="players-list__player-name col-xs-2">{{name}}</div>
+<div class="players-list__player-name col-xs-6">{{name}}</div>
 <div class="players-list__player-controls col-xs-2">
   <button type="submit" class="btn btn-default player-controls__minus">-</button>
 </div>
 <div class="players-list__player-score col-xs-2">{{score}}</div>
+<div class="players-list__player-controls col-xs-2">
+  <button type="submit" class="btn btn-default player-controls__plus">+</button>
+</div>
 </template>

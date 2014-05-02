@@ -1,6 +1,18 @@
 /* CSS declarations go here */
 
-.main-container {
+body {
+  font-family: 'Lato', Helvetica, arial, sans-serif;
+}
+
+.mid-container {
+}
+
+.main-title {
+  font-weight: 600;
+  margin-bottom: 50px;
+}
+
+.form__new-player-name {
 }
 
 .header__login-buttons {
