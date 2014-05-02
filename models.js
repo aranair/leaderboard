@@ -15,7 +15,16 @@ Players.allow({
 
 
 Meteor.methods({
+
   setPoints: function (options) {
+    var player = Players.findOne(options.id);
+    if (!player) { return false; }
+
+    var points = options.points;
+    return Players.update(options.id, {$set: { score: points }});
+  },
+
+  plusMinusPoints: function (options) {
     var player = Players.findOne(options.id);
     if (!player) { return false; }
 
@@ -25,6 +34,7 @@ Meteor.methods({
     }
     return Players.update(options.id, {$inc: { score: points }});
   },
+
 	createPlayer: function (options) {
 		if (!this.userId) return false;
 

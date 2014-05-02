@@ -5,34 +5,56 @@ if (Meteor.isClient) {
     });
   })
 
+  var plusMinusPoint = function(playerId, minusBln) {
+    Meteor.call('plusMinusPoints', {
+      id: playerId,
+      points: 1,
+      minus: minusBln
+    }, function(e, p) {
+      if (!p) { $('.js-create-alert').show(); }
+    });
+  };
+
+  var setPoints = function(event) {
+    event.preventDefault();
+    event.stopPropagation();
+    var keyCode = event.keyCode;
+    var $currentTarget = $(event.currentTarget);
+    var playerId = $currentTarget.data('id');
+    var value = $currentTarget.val();
+
+    if ((keyCode >= 48 && keyCode <= 57) || keyCode == 8 || keyCode == 13) {
+      if (!isNaN(parseFloat(value)) && isFinite(value)) {
+        Meteor.call('setPoints', {
+          id: playerId,
+          points: parseInt(value)
+        })
+      }
+    }
+    $currentTarget.focus();
+  };
+
   Template.playerslist.players = function() {
-    return Players.find({}, {sort: {score: -1}})
+    return Players.find({}, {sort: { score: -1 }})
   };
   Template.winnerslist.winners = function() {
-    return Players.find({}, {sort:{score:-1}}).fetch().splice(0,2);
+    return Players.find({}, {sort: { score: -1 }}).fetch().splice(0, 2);
   };
 
   Template.player.events = {
     'click .player-controls__plus': function(event) {
       var playerId = $(event.currentTarget).data('id');
-      Meteor.call('setPoints', {
-        id: playerId,
-        points: 1,
-        minus: false
-      }, function(e, p) {
-        if (!p) { $('.js-create-alert').show(); }
-      });
+      plusMinusPoint(playerId, false);
     },
     'click .player-controls__minus': function(event) {
       var playerId = $(event.currentTarget).data('id');
-      Meteor.call('setPoints', {
-        id: playerId,
-        points: 1,
-        minus: true
-      }, function(e, p) {
-        if (!p) { $('.js-create-alert').show(); }
-      });
+      plusMinusPoint(playerId, true);
     }
+  };
+
+  Template.playereditform.events = {
+    'submit form': setPoints, 
+    'keyup .js-edit-player-score': setPoints
   }
   
   Template.newplayerform.events = {

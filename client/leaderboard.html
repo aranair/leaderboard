@@ -66,20 +66,38 @@
 </div>
 </template>
 
+<template name="playereditform">
+<div class="col-xs-6">
+  <form role="form" class="form-edit-player js-form-edit-player">
+    <div class="form-group">
+      <input type="number" class="form-control edit-player__score js-edit-player-score" name="edit_player_score" value="{{score}}" data-id="{{_id}}">
+    </div>
+  </form>
+</div>
+</template>
+
+<template name="plusminusform">
+<div class="col-xs-6">
+  <button type="submit" class="btn btn-default player-controls__minus" data-id="{{_id}}">
+    <span class="glyphicon glyphicon-minus"></span>
+  </button>
+  <button type="submit" class="btn btn-default player-controls__plus" data-id="{{_id}}">
+    <span class="glyphicon glyphicon-plus"></span>
+  </button>
+</div>
+</template>
+
 <template name="player">
 <div class="row players-list__player-container">
   <div class="players-list__player-name col-xs-6">{{name}}</div>
-
   <div class="players-list__player-score col-xs-2">{{score}}</div>
 
   {{#if currentUser}}
     <div class="players-list__player-controls col-xs-4">
-      <button type="submit" class="btn btn-default player-controls__minus" data-id="{{_id}}">
-        <span class="glyphicon glyphicon-minus"></span>
-      </button>
-      <button type="submit" class="btn btn-default player-controls__plus" data-id="{{_id}}">
-        <span class="glyphicon glyphicon-plus"></span>
-      </button>
+      <div class="row">
+        {{> plusminusform}}
+        {{> playereditform}}
+      </div>
     </div>
   {{/if}}
 </div>
