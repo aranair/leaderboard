@@ -3,6 +3,6 @@ if (Meteor.isServer) {
     return Players.find({}, { sort: { score: -1 }});
   });
   Accounts.validateNewUser(function (user) {
-    return false;
+    return true;
   });
 }
