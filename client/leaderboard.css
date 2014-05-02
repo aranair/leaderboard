@@ -1,0 +1,39 @@
+/* CSS declarations go here */
+
+.main-container {
+}
+
+.header__login-buttons {
+  position: absolute;
+  top: 15px;
+  right: 150px;
+  z-index: 9999;
+}
+
+.new-player-form .form-control {
+  border-radius: 0px;
+}
+
+.form__save-btn {
+  border-radius: 0px;
+}
+
+.players-list__player-container {
+  margin-bottom: 5px;
+}
+.players-list__player-name {
+  max-width: 200px;
+  padding: 15px;
+  font-size: 24px;
+  line-height: 30px;
+}
+
+.players-list__player-score {
+  max-width: 100px;
+  text-align: center;
+  padding: 15px;
+  background: #3498db;
+  color: white;
+  font-size: 24px;
+  line-height: 30px;
+}
