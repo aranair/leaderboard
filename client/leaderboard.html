@@ -1,11 +1,11 @@
 <head>
-  <title>Wego Leaderboard</title>
+  <title>Bugs Monday</title>
 </head>
 
 <body>
   <div class="header__login-buttons">{{> loginButtons}}</div>
   <div class="container main-container">
-    <h1>Wego Leaderboard</h1>
+    <h1>Bugs Monday Leaderboard</h1>
     <div class="row">
       {{> newplayerform}}
     </div>
@@ -38,5 +38,8 @@
 
 <template name="player">
 <div class="players-list__player-name col-xs-2">{{name}}</div>
+<div class="players-list__player-controls col-xs-2">
+  <button type="submit" class="btn btn-default player-controls__minus">-</button>
+</div>
 <div class="players-list__player-score col-xs-2">{{score}}</div>
 </template>

@@ -18,22 +18,26 @@
   border-radius: 0px;
 }
 
+.players-list__player-controls {
+  width: auto;
+  margin-top: 7px;
+}
+
 .players-list__player-container {
   margin-bottom: 5px;
+  font-size: 24px;
+  line-height: 30px;
+  color: white;
 }
 .players-list__player-name {
   max-width: 200px;
-  padding: 15px;
-  font-size: 24px;
-  line-height: 30px;
+  padding: 10px;
+  color: #333;
 }
 
 .players-list__player-score {
-  max-width: 100px;
   text-align: center;
-  padding: 15px;
+  max-width: 100px;
+  padding: 10px;
   background: #3498db;
-  color: white;
-  font-size: 24px;
-  line-height: 30px;
 }
