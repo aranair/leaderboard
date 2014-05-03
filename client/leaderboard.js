@@ -18,18 +18,16 @@ if (Meteor.isClient) {
   var setPoints = function(event) {
     event.preventDefault();
     event.stopPropagation();
-    var keyCode = event.keyCode;
-    var $currentTarget = $(event.currentTarget);
+    var $currentTarget = $(event.currentTarget[0]);
     var playerId = $currentTarget.data('id');
     var value = $currentTarget.val();
 
-    if ((keyCode >= 48 && keyCode <= 57) || keyCode == 8 || keyCode == 13) {
-      if (!isNaN(parseFloat(value)) && isFinite(value)) {
-        Meteor.call('setPoints', {
-          id: playerId,
-          points: parseInt(value)
-        })
-      }
+    console.log(value);
+    if (!isNaN(parseFloat(value)) && isFinite(value)) {
+      Meteor.call('setPoints', {
+        id: playerId,
+        points: parseInt(value)
+      })
     }
     $currentTarget.focus();
   };
@@ -53,9 +51,9 @@ if (Meteor.isClient) {
   };
 
   Template.playereditform.events = {
-    'submit form': setPoints, 
-    'keyup .js-edit-player-score': setPoints
-  }
+    'submit form': setPoints
+  };
+  // 'keyup .js-edit-player-score': setPoints
   
   Template.newplayerform.events = {
     'click .form__save-btn': function(event) {
