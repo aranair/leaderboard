@@ -5,11 +5,10 @@ Players.allow({
 		return false;
 	},
 	update: function (userId, player) {
-		// return player.owner === userId;
-    return true;
+    return false;
 	},
 	remove: function (userId, player) {
-		return player.owner === userId;
+    return false;
 	}
 });
 
