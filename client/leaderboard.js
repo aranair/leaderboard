@@ -26,7 +26,7 @@ if (Meteor.isClient) {
     if (!isNaN(parseFloat(value)) && isFinite(value)) {
       Meteor.call('setPoints', {
         id: playerId,
-        points: parseInt(value)
+        points: parseFloat(value)
       })
     }
     $currentTarget.focus();
