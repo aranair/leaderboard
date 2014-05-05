@@ -36,7 +36,7 @@ if (Meteor.isClient) {
     return Players.find({}, {sort: { score: -1 }})
   };
   Template.winnerslist.winners = function() {
-    return Players.find({}, {sort: { score: -1 }}).fetch().splice(0, 2);
+    return Players.find({score: {$gt: 0}}, {sort: { score: -1 }}).fetch().splice(0, 2);
   };
 
   Template.player.events = {
