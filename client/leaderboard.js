@@ -22,7 +22,6 @@ if (Meteor.isClient) {
     var playerId = $currentTarget.data('id');
     var value = $currentTarget.val();
 
-    console.log(value);
     if (!isNaN(parseFloat(value)) && isFinite(value)) {
       Meteor.call('setPoints', {
         id: playerId,
