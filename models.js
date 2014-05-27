@@ -1,14 +1,20 @@
 Players = new Meteor.Collection("players")
 
+function adminUser(userId) {
+  var adminUser = Meteor.players
+    .findOne({ emails: { $elemMatch: { address: "boa.homan@gmail.com" } } } );
+  return (userId && adminUser && userId === adminUser._id);
+}
+
 Players.allow({
-	insert: function () {
-		return false;
+	insert: function (userId, player) {
+    return adminUser(userId);
 	},
 	update: function (userId, player) {
-    return false;
+    return adminUser(userId);
 	},
 	remove: function (userId, player) {
-    return false;
+    return adminUser(userId);
 	}
 });
 
