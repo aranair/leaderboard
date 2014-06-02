@@ -27,6 +27,10 @@ body {
 }
 
 .right-container__credits {
+  font-family: 'Droid Serif', Helvetica, arial, serif;
+  padding-top: 60px;
+  height: 200px;
+  border: 1px dashed gray;
   color: rgba(255, 255, 255, 0.6);
   font-weight: 100;
 }
